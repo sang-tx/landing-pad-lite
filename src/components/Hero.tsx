@@ -2,6 +2,9 @@ import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-image.jpg";
 
 const Hero = () => {
+  const handleClick = () => {
+    window.alert('Get Started Today')
+  }
   return (
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background with gradient overlay */}
