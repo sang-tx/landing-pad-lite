@@ -5,6 +5,9 @@ const Hero = () => {
   const handleClick = () => {
     window.alert('Get Started Today')
   }
+  const handleClickLearn = () => {
+    window.alert('Learn More')
+  }
   return (
     <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background with gradient overlay */}
@@ -28,10 +31,10 @@ const Hero = () => {
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Button variant="hero" size="lg" className="min-w-[200px]">
+          <Button variant="hero" size="lg" className="min-w-[200px]" onClick={handleClick}>
             Get Started Today
           </Button>
-          <Button variant="outline" size="lg" className="min-w-[200px] border-white/30 text-white hover:bg-white/10">
+          <Button variant="outline" size="lg" className="min-w-[200px] border-white/30 text-white hover:bg-white/10" onClick={handleClickLearn}>
             Learn More
           </Button>
         </div>
