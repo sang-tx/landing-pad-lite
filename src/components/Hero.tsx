@@ -1,7 +1,40 @@
 import { Button } from "@/components/ui/button";
+import { useState, useEffect } from "react";
 import heroImage from "@/assets/hero-image.jpg";
+import { removeBackground, loadImageFromUrl } from "@/utils/backgroundRemoval";
 
 const Hero = () => {
+  const [processedImageUrl, setProcessedImageUrl] = useState<string | null>(null);
+  const [isProcessing, setIsProcessing] = useState(false);
+
+  useEffect(() => {
+    const processHeroImage = async () => {
+      try {
+        setIsProcessing(true);
+        console.log('Loading hero image...');
+        const imageElement = await loadImageFromUrl(heroImage);
+        console.log('Removing background...');
+        const processedBlob = await removeBackground(imageElement);
+        const processedUrl = URL.createObjectURL(processedBlob);
+        setProcessedImageUrl(processedUrl);
+        console.log('Background removal complete!');
+      } catch (error) {
+        console.error('Failed to process hero image:', error);
+      } finally {
+        setIsProcessing(false);
+      }
+    };
+
+    processHeroImage();
+
+    return () => {
+      if (processedImageUrl) {
+        URL.revokeObjectURL(processedImageUrl);
+      }
+    };
+  }, []);
+
+  const imageToUse = processedImageUrl || heroImage;
   const handleClick = () => {
     window.alert('Get Started Today')
   }
@@ -13,8 +46,13 @@ const Hero = () => {
       {/* Background with gradient overlay */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ backgroundImage: `url(${heroImage})` }}
+        style={{ backgroundImage: `url(${imageToUse})` }}
       />
+      {isProcessing && (
+        <div className="absolute inset-0 flex items-center justify-center bg-background/50">
+          <div className="text-foreground">Processing image...</div>
+        </div>
+      )}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/80 via-primary/60 to-accent/70" />
       
       {/* Content */}
