@@ -29,7 +29,7 @@ const Hero = () => {
           <Button variant="hero" size="lg" className="min-w-[200px]" onClick={handleClick}>
             Get Started Today
           </Button>
-          <Button variant="outline" size="lg" className="min-w-[200px] border-white/30 text-white hover:bg-white/10" onClick={handleClickLearn}>
+          <Button variant="outline" size="lg" className="min-w-[200px] border-white/60 text-white hover:bg-white/20 hover:border-white/80 bg-white/10 backdrop-blur-sm" onClick={handleClickLearn}>
             Learn More
           </Button>
         </div>
