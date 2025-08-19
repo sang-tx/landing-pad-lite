@@ -8,7 +8,7 @@ const Hero = () => {
     window.alert('Learn More')
   }
   return (
-    <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <div className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
       {/* Solid color background with gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/90 to-accent" />
       
