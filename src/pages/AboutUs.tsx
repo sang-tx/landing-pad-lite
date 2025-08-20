@@ -7,12 +7,6 @@ const AboutUs = () => {
   return (
     <div className="min-h-screen">
       <Navigation />
-      <div id="home">
-        <Hero />
-      </div>
-      <div id="features">
-        <Features />
-      </div>
       <div id="about">
         <CTA />
       </div>
